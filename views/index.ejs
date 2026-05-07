@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <main>
+        <h1>Bem-vindo à <%= title %></h1>
+        <p>Confira o nosso catálogo abaixo:</p>
+
+        <section class="vitrine">
+            <% if (produtos.length > 0) { %>
+                <ul>
+                    <% produtos.forEach(function(tinta) { %>
+                        <li style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                            <strong><%= tinta.nome %></strong> - Marca: <%= tinta.marca %>
+                            <br>
+                            Cor: <%= tinta.cor %> | <strong>R$ <%= tinta.preco %></strong>
+                            <br>
+                            <small>Em estoque: <%= tinta.quantidade_estoque %> unidades</small>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p><em>Nenhuma tinta foi cadastrada no banco de dados ainda.</em></p>
+            <% } %>
+        </section>
+    </main>
+</body>
 </html>

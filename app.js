@@ -45,13 +45,17 @@ app.use(function(err, req, res, next) {
 sequelize.authenticate()
   .then(() => {
     console.log('Conexão com o Banco de dados foi bem sucedida!');
+    return sequelize.sync({force: false});
+  })
+  .then(() => {
+    console.log('Tabelas sincronizadas com sucesso no MariaDB!');
   })
   .catch(err => {
-    console.error('Falha com a conexão do banco de dados: ', err);
+    console.error('Falha com a conexão ou sincronização do banco de dados: ', err);
   });
 
 
-
+module.exports = app;
 
 
 
