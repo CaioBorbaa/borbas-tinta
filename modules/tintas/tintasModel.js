@@ -9,19 +9,19 @@ const Tinta = sequelize.define('tintasModel', {
 
     nome: {
         type: DataTypes.STRING,
-        allownull: false
+        allowNull: false
     },
     marca: {
         type: DataTypes.STRING,
-        allownull: false
+        allowNull: false
     },
     cor: {
         type: DataTypes.STRING,
-        allownull: false
+        allowNull: false
     },
     preco: {
         type: DataTypes.DECIMAL(10,2),
-        allownull: false
+        allowNull: false
     },
     quantidade_estoque: {
         type: DataTypes.INTEGER,
@@ -29,6 +29,8 @@ const Tinta = sequelize.define('tintasModel', {
     }
 
 },{
-    tableName: 'tintas',
+    tableName: 'tinta',
     timestamps: true
 });
+
+module.exports = Tinta;
